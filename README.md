@@ -2,7 +2,7 @@
 
 ## Overview
 
-**MVRS_To_Upload.ps1** is a PowerShell script designed to automate the process of transferring `.dat` files from Temetra to MOM Software written by Kevin Cozart. This script identifies the latest ZIP file in a user's Downloads folder, extracts its contents, checks for the presence of a `.dat` file, and moves the `.dat` file to a specified upload folder. The script also performs cleanup tasks to maintain a clean working environment.
+**MVRS_To_Upload.ps1** is a PowerShell script designed to automate the process of transferring `.dat` files from Temetra to MOM Software this script was written by Kevin Cozart. This script identifies the latest ZIP file in a user's Downloads folder, extracts its contents, checks for the presence of a `.dat` file, and moves the `.dat` file to a specified upload folder. The script also performs cleanup tasks to maintain a clean working environment.
 
 ## Features
 
