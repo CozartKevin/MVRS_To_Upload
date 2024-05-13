@@ -34,9 +34,9 @@
 3. **Run the Script:**
    - Open PowerShell with administrative privileges.
    - Navigate to the directory containing `MVRS_To_Upload.ps1`.
-   - Execute the script using the following command:
+   - Execute the script using the following command, including the `-Verbose` parameter for detailed logging:
      ```powershell
-     .\MVRS_To_Upload.ps1
+     .\MVRS_To_Upload.ps1 -Verbose
      ```
 
 ### Parameters
