@@ -1,3 +1,49 @@
+# ------------------------------------------------------------------------------------------------------
+# Script Name: MVRS_To_Upload.ps1
+# Description:
+#   This PowerShell script is designed to automate the process of transferring .dat file data from 
+#   Temetra to MOM Software by Corbin Willits. It identifies the latest ZIP file in the user's Downloads 
+#   folder, moves it to a designated backup folder, extracts its contents to check for the presence of 
+#   a .dat file, and if found, moves the .dat file to a specified upload folder. The script also handles 
+#   cleaning up the extraction directory by removing any non-essential files and directories. If no .dat 
+#   file is found, it also removes the transferred ZIP file from the backup location.
+#
+# Features:
+#   - Automated identification and processing of the most recent ZIP file in the Downloads folder.
+#   - Ensures necessary directories for backup, extraction, and upload exist.
+#   - Extracts ZIP files and checks for the presence of .dat files.
+#   - Transfers .dat files to a specified upload folder.
+#   - Cleans up extraction directory and optionally removes ZIP files without .dat files.
+#   - Detailed logging of all actions, which can be enhanced with the use of the `-Verbose` parameter.
+#
+# Usage:
+#   To run the script, use the following command in PowerShell with administrative privileges:
+#   .\MVRS_To_Upload.ps1 -Verbose
+#   The `-Verbose` parameter enables detailed logging, providing insights into each step the script performs.
+#
+# Copyright:
+#   MIT License
+#
+#   Copyright (c) [2024] Kevin Cozart
+#
+#   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
+#   associated documentation files (the "Software"), to deal in the Software without restriction, including 
+#   without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+#   copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to 
+#   the following conditions:
+#   
+#   The above copyright notice and this permission notice shall be included in all copies or substantial 
+#   portions of the Software.
+#
+#   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
+#   LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN 
+#   NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+#   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+#   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# ------------------------------------------------------------------------------------------------------
+
+
+
 # Define paths
 $backupFolder = "C:\Scripts\TransferredZips"
 $extractFolder = "C:\Scripts\TransferredZips"
