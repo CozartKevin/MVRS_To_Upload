@@ -1,17 +1,40 @@
-# MVRS_To_Upload.ps1
+# MVRS File Processing Automation
 
 ## Overview
 
-**MVRS_To_Upload.ps1** is a PowerShell script designed to automate the process of transferring `.dat` files from Temetra to MOM Software. This script identifies the latest ZIP file in a user's Downloads folder, extracts its contents, checks for the presence of a `.dat` file, and moves the `.dat` file to a specified upload folder. The script also performs cleanup tasks to maintain a clean working environment.
+PowerShell automation utility that processes exported data files through a repeatable workflow.
+
+The tool automates file discovery, extraction, validation, transfer, cleanup, and logging to reduce manual steps and improve operational reliability.
 
 ## Features
 
-- **Automated ZIP Handling:** Identifies and processes the most recent ZIP file in the Downloads folder.
-- **Directory Management:** Ensures all necessary directories exist or creates them if missing.
-- **File Extraction and Verification:** Extracts ZIP contents and verifies the presence of a `.dat` file.
-- **File Transfer:** Renames and moves the `.dat` file to the designated upload folder.
-- **Comprehensive Cleanup:** Removes unnecessary files and directories post-processing.
-- **Robust Logging:** Logs all actions and errors for easy tracking and debugging.
+- Automated archive discovery
+- ZIP extraction workflow
+- File validation
+- Automated file transfer
+- Cleanup routines
+- Structured logging
+- Error handling
+
+## Technical Details
+
+Built with:
+- PowerShell
+- Windows file system automation
+- Native archive handling
+- Logging and error management
+
+## Engineering Considerations
+
+This project demonstrates:
+- Designing repeatable operational workflows
+- Handling failures gracefully
+- Creating maintainable automation scripts
+- Improving visibility through logging
+
+## Usage
+
+...
 
 ## Usage
 
@@ -80,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### Note:
-This software must include the reference to the original author, Kevin Cozart at Core Utilities Inc., when used, distributed, or modified.
+This software must include the reference to the original author, Kevin Cozart, when used, distributed, or modified.
 
 ---
 [LinkedIn](https://www.linkedin.com/in/Cozartkevin)  
