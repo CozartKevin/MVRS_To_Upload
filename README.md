@@ -1,110 +1,148 @@
-# MVRS File Processing Automation
+# PowerShell File Processing Automation Tool
 
 ## Overview
 
-PowerShell automation utility that processes exported data files through a repeatable workflow.
+`MVRS_To_Upload.ps1` is a PowerShell automation utility designed to streamline a recurring file processing workflow.
 
-The tool automates file discovery, extraction, validation, transfer, cleanup, and logging to reduce manual steps and improve operational reliability.
+The script automates the process of locating compressed files, extracting contents, validating required data files, transferring output files to a destination directory, performing cleanup operations, and recording execution details through logging.
+
+This project demonstrates practical systems administration automation concepts including file workflow automation, validation checks, error handling, and operational logging.
 
 ## Features
 
-- Automated archive discovery
-- ZIP extraction workflow
-- File validation
-- Automated file transfer
-- Cleanup routines
-- Structured logging
-- Error handling
+### Automated ZIP Processing
+- Searches a configured input directory for the most recent ZIP archive.
+- Moves the archive into a processing directory before extraction.
+
+### File Extraction and Validation
+- Extracts ZIP contents using PowerShell archive tools.
+- Searches extracted contents for expected `.dat` files.
+- Validates that required files exist before continuing.
+
+### Automated File Transfer
+- Renames validated `.dat` files to the expected output filename.
+- Moves processed files to the configured destination directory.
+
+### Directory Management
+- Creates required directories if they do not already exist.
+- Maintains a predictable workflow structure.
+
+### Cleanup Operations
+- Removes temporary extracted files and directories after processing.
+- Removes invalid archive files when expected output data is not found.
+
+### Execution Logging
+- Records script activity including:
+  - Directory creation
+  - File processing steps
+  - Successful operations
+  - Errors and failures
 
 ## Technical Details
 
 Built with:
+
 - PowerShell
 - Windows file system automation
-- Native archive handling
-- Logging and error management
+- Archive extraction workflows
+- File validation
+- Error handling
+- Execution logging
 
-## Engineering Considerations
+## Workflow
 
-This project demonstrates:
-- Designing repeatable operational workflows
-- Handling failures gracefully
-- Creating maintainable automation scripts
-- Improving visibility through logging
+The script follows this process:
+
+Rendered result:
+
+Input Directory
+      |
+      v
+Locate Latest ZIP File
+      |
+      v
+Move Archive to Processing Folder
+      |
+      v
+Extract Archive Contents
+      |
+      v
+Validate Required .dat File
+      |
+      v
+Rename and Transfer File
+      |
+      v
+Cleanup Temporary Files
+      |
+      v
+Write Execution Logs
+
 
 ## Usage
 
-...
+### Requirements
 
-## Usage
+- Windows PowerShell 5.0+
+- Appropriate permissions to access configured directories
 
-### Prerequisites
+### Running the Script
 
-- PowerShell 5.0 or higher
-- Appropriate permissions to access and modify specified directories and files.
+Clone or download the repository.
 
-### Script Execution
+Navigate to the script location:
 
-1. **Download the Script:**
-   - Clone or download the script from the GitHub repository.
+```powershell
+cd path\to\repository
+Execute:
+.\MVRS_To_Upload.ps1 -Verbose
+```
+The -Verbose parameter displays additional runtime information during execution.
 
-2. **Set Up Environment:**
-   - Ensure the following directories are correctly set up:
-     - `C:\Scripts\TransferredZips`
-     - `C:\MVRS\XFER\Upload`
-     - `C:\Scripts\Logs`
+Configuration
 
-3. **Run the Script:**
-   - Open PowerShell with administrative privileges.
-   - Navigate to the directory containing `MVRS_To_Upload.ps1`.
-   - Execute the script using the following command, including the `-Verbose` parameter for detailed logging:
-     ```powershell
-     .\MVRS_To_Upload.ps1 -Verbose
-     ```
+The script uses variables at the beginning of the file to define workflow locations:
+$backupFolder
+$extractFolder
+$uploadFolder
+$logFolder
+$downloadsFolder
 
-### Parameters
+These values can be modified based on the environment where the script is deployed.
 
-- **$backupFolder**: Path to the backup folder where ZIP files are moved.
-- **$extractFolder**: Path to the folder where ZIP files are extracted.
-- **$uploadFolder**: Path to the upload folder where `.dat` files are moved.
-- **$uploadFile**: Name of the upload file (`UPLOAD.dat`).
-- **$logFolder**: Path to the folder where logs are stored.
-- **$downloadsFolder**: Path to the Downloads folder of the current user.
+Engineering Considerations
 
-### Script Details
+This project was designed around several operational goals:
 
-The script performs the following steps:
+Reduce repetitive manual file handling
+Create a repeatable workflow for recurring tasks
+Improve troubleshooting through execution logs
+Validate expected files before transfer
+Reduce opportunities for user error
+Current Limitations
+Workflow paths are configured directly within the script.
+Designed for Windows PowerShell environments.
+Assumes expected file types and workflow structure.
+Logging is file-based rather than centralized.
+Future Improvements
 
-1. **Define Paths**: Sets up paths for backup, extraction, upload, and logging.
-2. **Ensure Directories**: Checks if necessary directories exist and creates them if not.
-3. **Identify ZIP File**: Finds the most recent ZIP file in the Downloads folder.
-4. **Move ZIP File**: Moves the identified ZIP file to the backup folder.
-5. **Extract Contents**: Extracts the contents of the ZIP file to the extraction folder.
-6. **Check for `.dat` File**: Searches for a `.dat` file in the extracted contents.
-7. **Move `.dat` File**: Renames and moves the `.dat` file to the upload folder.
-8. **Cleanup**: Removes all non-.zip, non-.dat, and non-.bat files and directories.
-9. **Specific ZIP Removal**: If no `.dat` file is found, the script removes the ZIP file from the backup folder.
-10. **Logging**: Logs all actions and errors throughout the script execution.
+Potential enhancements:
 
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request with your improvements or bug fixes.
-
-## License
+External configuration file support
+Improved reporting output
+Additional validation rules
+More robust recovery workflows
+Scheduled execution examples
+License
 
 MIT License
 
-Copyright (c) [2024] Kevin Cozart.
+Copyright (c) 2024 Kevin Cozart
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-### Note:
-This software must include the reference to the original author, Kevin Cozart, when used, distributed, or modified.
-
----
-[LinkedIn](https://www.linkedin.com/in/Cozartkevin)  
-[GitHub](https://www.github.com/CozartKevin)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
